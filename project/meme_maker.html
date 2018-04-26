@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Meme's</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <style>
+    #image-contain {
+      display: inline-flex;
+    }
+    button{
+    font-size: 14px;
+    border-radius: 10px;
+    color: red;
+    background: #56c7e9;
+    }
+    input[type=text] {
+    width: 6em;
+    border-radius: 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1 align="center">Meme Maker</h1>
+  <div>
+    <input type="file" id="file" />  
+  </div>
+  <div id="image-contain">
+    <canvas width="500px" height="500px">
+    </canvas>
+    <div>
+      <STRONG><span>Top-Line:</span></STRONG><br/>
+      <input id="topLineText" type="text"><br/>
+      <STRONG><span>Bottom-Line:</span></STRONG><br/>
+      <input id="bottomLineText" type="text"><br/>
+      <button id="saveButton">Save</button>
+    </div>
+  </div>
+  <script>
+    function Textchangelistener (e) {
+      var id = e.target.id;
+      var text = e.target.value;
+      
+      if (id == "topLineText") {
+        window.topLineText = text;
+      } else {
+        window.bottomLineText = text;
+      }
+      
+      redrawmeme(window.imageSrc, window.topLineText, window.bottomLineText);
+    }
+    
+    function redrawmeme(image, topLine, bottomLine) {
+      // Get Canvas2DContext
+      var canvas = document.querySelector('canvas');
+      var ctx = canvas.getContext("2d");
+      if (image != null)
+        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+      
+      // Text attributes
+      ctx.font = '30pt Impact';
+      ctx.textAlign = 'center';
+      ctx.strokeStyle = 'black';
+      ctx.lineWidth = 3;
+      ctx.fillStyle = 'white';
+      
+      if (topLine != null) {
+        ctx.fillText(topLine, canvas.width / 2, 40);
+        ctx.strokeText(topLine, canvas.width / 2, 40);
+      }
+      
+      if (bottomLine != null) {
+        ctx.fillText(bottomLine, canvas.width / 2, canvas.height - 20);
+        ctx.strokeText(bottomLine, canvas.width / 2, canvas.height - 20);
+      }
+    }
+    
+    function savefile() {
+      window.open(document.querySelector('canvas').toDataURL());
+    }
+    
+    function file_select(e) {
+      var canvasWidth = 500;
+      var canvasHeight = 500;
+      var file = e.target.files[0];
+
+      var reader = new FileReader();
+      reader.onload = function(fileObject) {
+      var data = fileObject.target.result;
+        
+      var image = new Image();
+      image.onload = function() {
+          
+          window.imageSrc = this;
+          redrawmeme(window.imageSrc, null, null);
+        }
+
+        image.src = data;
+        console.log(fileObject.target.result);
+      };
+      reader.readAsDataURL(file)
+    }
+    
+    window.topLineText = "";
+    window.bottomLineText = "";
+    var input1 = document.getElementById('topLineText');
+    var input2 = document.getElementById('bottomLineText');
+    input1.oninput = Textchangelistener;
+    input2.oninput = Textchangelistener;
+    document.getElementById('file').addEventListener('change', file_select, false);
+    document.querySelector('button').addEventListener('click', savefile, false);
+  </script>
+
+</body>
+</html>

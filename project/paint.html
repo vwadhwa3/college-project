@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Paint</title>
+        <link rel="stylesheet" href="draw.css">
+    </head >
+    <body>
+        <div class="topbar">
+            
+            <button id="savebutton">Save</button>
+            <button id="undobutton">Undo</button>
+            <button id="clearbutton">Clear</button>
+            <button onclick="PixelArtMaker()">Pixel Art Maker</button>
+            <button onclick="meme_maker()">meme Maker</button> 
+            <script type="text/javascript">
+            var PixelArtMaker;
+
+            function PixelArtMaker() {
+                PixelArtMaker = window.open("PixelArtMaker.html", "_self");
+            }
+            var meme_maker;
+
+            function meme_maker() {
+                meme_maker = window.open("meme_maker.html", "_self");
+            }
+
+            </script>
+            <input type="color" id="colorpicker">          
+            <input type="range" id="brushsize" min="1" max="50" value="10">
+        </div>
+        <canvas id="draw"></canvas>
+        <script src="jquery-3.2.1.min.js"></script>
+        <script src="draw.js"></script>
+    </body>
+</html>

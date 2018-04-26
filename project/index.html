@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<title>Graphic Application</title>
+	<style type="text/css">
+		body{
+			width: 100%;
+			background-image: url(p.png);
+		}
+	.loader {
+		position: absolute;
+		top: 41%;
+		left: 45%;
+		border: 16px solid #f3f3f3;
+		border-radius: 50%;
+		border-top: 16px solid blue;
+		border-right: 16px solid green;
+		border-bottom: 16px solid red;
+		border-left: 16px solid yellow;
+		width: 120px;
+		height: 120px;
+		-webkit-animation: spin 2s linear infinite;
+		animation: spin 2s linear infinite;
+	}
+
+	@-webkit-keyframes spin {
+		0% { -webkit-transform: rotate(0deg); }
+		100% { -webkit-transform: rotate(360deg); }
+	}
+
+	@keyframes spin {
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(360deg); }
+	}
+	p{
+		font-size:60px;
+		color: white;
+		position: relative;
+		top: 15%;
+		left: 35%
+	}  
+
+	a{
+		position: absolute;
+		top: 70%;
+		left: 47%;
+		text-decoration:none; 
+		font-size: 30px;
+		color: black;
+	}
+
+	a:hover { 
+		color: white;
+		text-decoration: none;
+		font-size: 50px;
+	}
+</style>
+
+</head>
+<body>
+	<p>Graphic Application</p>
+	<a href="paint.html">click me</a>
+	<div class="loader"></div>
+</body>
+</html>

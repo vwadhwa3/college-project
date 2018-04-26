@@ -1,0 +1,39 @@
+body {
+    width: 100%;
+    margin: 0;
+
+}
+
+.topbar {
+	width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: #19439c;
+    border-bottom: 2px solid black;
+    position: absolute; 
+}
+
+.topbar * {
+    margin: 5px 10px;
+}
+
+#draw {
+ 	width: 100%;
+}
+
+button{
+    font-size: 15px;
+	border-radius: 10px;
+    color: red;
+    background: #56c7e9;
+}
+
+a{
+	color: black;
+	text-decoration: none;
+}
+
+input[type=color]{
+    border-radius: 15px;
+}
+
